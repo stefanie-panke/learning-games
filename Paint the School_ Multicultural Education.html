@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paint the School: Multicultural Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef6f7;--ink:#12313a;--card:#fff;--line:#c9dde0;--accent:#0e7c86;--sky:#cfeaf5;--gray:#b9bfc6;--win:#f4fbff;--halo:#fff;--sun:#ffd25e;--good:#2e8b57;--bad:#c0392b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1e24;--ink:#e6f2f4;--card:#172b33;--line:#2c4650;--accent:#4fc3cd;--sky:#1b3a47;--gray:#59616a;--win:#2a4a58;--halo:#0f1e24;--sun:#e9c46a;--good:#5fd08b;--bad:#ff8a7a}}
+:root[data-theme="dark"]{--bg:#0f1e24;--ink:#e6f2f4;--card:#172b33;--line:#2c4650;--accent:#4fc3cd;--sky:#1b3a47;--gray:#59616a;--win:#2a4a58;--halo:#0f1e24;--sun:#e9c46a;--good:#5fd08b;--bad:#ff8a7a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:16px}
+h1,h2{font-family:"Fredoka","Trebuchet MS",system-ui,sans-serif;font-weight:600;line-height:1.15;margin:0}
+h1{font-size:clamp(1.6rem,5vw,2.4rem)}
+h2{font-size:1.35rem;margin-bottom:8px}
+.sub{margin:6px 0 14px;max-width:62ch}
+.bar{height:12px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0 16px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .5s}
+.game{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:860px){.game{grid-template-columns:1.3fr 1fr;align-items:start}}
+svg{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--line)}
+.zone{cursor:pointer;outline:none}
+.zone .f{fill:var(--gray);stroke:var(--ink);stroke-width:2;transition:fill .4s}
+.zone:hover .f{filter:brightness(1.1)}
+.zone:focus-visible .f,.zone.sel .f{stroke:var(--accent);stroke-width:5}
+.lbl{font:600 12px system-ui,sans-serif;fill:var(--ink);stroke:var(--halo);stroke-width:3;paint-order:stroke;pointer-events:none}
+.win{fill:var(--win);stroke:var(--ink);stroke-width:1.5;pointer-events:none}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;min-height:260px}
+.pill{display:inline-block;font-size:.85rem;font-weight:600;color:var(--accent);margin-bottom:6px}
+.opt{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:11px 13px;margin:8px 0;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.bad{border-color:var(--bad);opacity:.65}
+.fb{border-left:4px solid var(--bad);padding:6px 12px;margin-top:10px}
+.ok{border-left-color:var(--good)}
+.pal{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.sw{width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);cursor:pointer}
+.sw:focus-visible,.opt:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn{font:inherit;font-weight:600;background:var(--accent);color:var(--bg);border:0;border-radius:12px;padding:10px 16px;cursor:pointer;margin-top:8px}
+.panel ul{padding-left:20px;margin:8px 0}
+.panel li{margin:6px 0}
+.src{font-size:.85rem;opacity:.75;margin-top:14px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Paint the School</h1>
+<p class="sub">Based on “The light in their eyes” (Halpern and Aydin), a study of doctoral students learning multicultural education. Tap each grey area, answer the challenge, then paint it to bring a culturally responsive school to life.</p>
+<div class="bar" aria-hidden="true"><i id="meter"></i></div>
+<div class="game">
+<svg id="school" viewBox="0 0 600 400" role="group" aria-label="School building with six areas to paint">
+<rect width="600" height="400" fill="var(--sky)"/>
+<circle cx="530" cy="55" r="28" fill="var(--sun)"/>
+<g fill="var(--win)"><ellipse cx="80" cy="55" rx="40" ry="14"/><ellipse cx="110" cy="46" rx="28" ry="12"/><ellipse cx="390" cy="38" rx="36" ry="12"/></g>
+
+<g class="zone" data-z="5" tabindex="0" role="button" aria-label="Playground: open dialogue">
+<rect class="f" x="0" y="345" width="600" height="55"/>
+<circle cx="70" cy="372" r="10" class="win"/><circle cx="535" cy="372" r="10" class="win"/>
+<text class="lbl" x="300" y="381" text-anchor="middle">Open dialogue</text></g>
+
+<g class="zone" data-z="1" tabindex="0" role="button" aria-label="Staff room: learning together">
+<rect class="f" x="40" y="200" width="130" height="145"/>
+<rect class="win" x="60" y="220" width="30" height="30"/><rect class="win" x="120" y="220" width="30" height="30"/>
+<text class="lbl" x="105" y="300" text-anchor="middle">Learning together</text></g>
+
+<g class="zone" data-z="4" tabindex="0" role="button" aria-label="Library: applying it in practice">
+<rect class="f" x="430" y="200" width="130" height="145"/>
+<rect class="win" x="450" y="220" width="30" height="30"/><rect class="win" x="510" y="220" width="30" height="30"/>
+<text class="lbl" x="495" y="300" text-anchor="middle">Applying it</text></g>
+
+<g class="zone" data-z="2" tabindex="0" role="button" aria-label="Classroom: transformation">
+<rect class="f" x="170" y="140" width="260" height="205"/>
+<rect class="win" x="190" y="162" width="32" height="32"/><rect class="win" x="238" y="162" width="32" height="32"/>
+<rect class="win" x="330" y="162" width="32" height="32"/><rect class="win" x="378" y="162" width="32" height="32"/>
+<text class="lbl" x="300" y="232" text-anchor="middle">Transformation</text></g>
+
+<g class="zone" data-z="0" tabindex="0" role="button" aria-label="Roof: why it matters">
+<polygon class="f" points="150,142 300,60 450,142"/>
+<text class="lbl" x="300" y="124" text-anchor="middle">Why it matters</text></g>
+
+<g class="zone" data-z="3" tabindex="0" role="button" aria-label="Entrance: culturally responsive teaching">
+<path class="f" d="M262 345V290a38 38 0 0 1 76 0V345Z"/>
+<text class="lbl" x="300" y="326" text-anchor="middle">CRT</text></g>
+
+<line x1="300" y1="60" x2="300" y2="30" stroke="var(--ink)" stroke-width="3"/>
+<polygon points="300,30 328,39 300,48" fill="#e4572e" stroke="var(--ink)" stroke-width="1.5"/>
+</svg>
+
+<div class="panel" id="panel" aria-live="polite"></div>
+</div>
+</div>
+
+<script>
+var Z=[
+{name:"Roof: why it matters",pillar:"The need",
+ q:"In Lee County, Florida, students speak 134 languages and represent 154 countries, yet about 80% of teachers are White and mono-cultural. What does this gap call for?",
+ o:[["Wait. Demographics will balance out on their own.","The paper projects the gap growing, not closing, as minority students become the numerical majority."],
+    ["Prepare pre-service and in-service teachers with the knowledge, skills and attitudes to help all students succeed.",""],
+    ["Hire a few specialists and leave everyone else as they are.","Every teacher works with diverse students, so preparation must reach all educators."]],a:1,
+ why:"Schools are growing more diverse faster than the teaching force. Multicultural teacher education prepares educators to include students who are often unseen and unheard."},
+{name:"Staff room: learning together",pillar:"Learning from each other",
+ q:"What did the six doctoral students say helped them understand multicultural education the most?",
+ o:[["Reading the textbook alone.","Participants said a textbook can only do so much."],
+    ["Listening to a lecture with no discussion.","Learning came from voices and experiences, not one-way delivery."],
+    ["Discussing readings with peers and a professor who shared his own experiences.",""]],a:2,
+ why:"Peers from different backgrounds, plus a facilitator who modeled openness, made the readings meaningful. This matches adult and social constructivist learning theory."},
+{name:"Classroom: transformation",pillar:"Eye-opening change",
+ q:"John first expected to learn about customs and special holidays. By the end, what did he understand multicultural education to be?",
+ o:[["A reform movement that promotes equity for all students.",""],
+    ["The same thing as teaching English to speakers of other languages.","Emily and Rachel thought this at first, and the course corrected it."],
+    ["A set of heroes-and-holidays lessons.","Rachel said she had been stuck in this view before the course changed her."]],a:0,
+ why:"Participants moved from cynicism and narrow ideas to seeing equity, social justice and self-reflection as the core. Carol, Miles and John said they would treat students differently."},
+{name:"Entrance: CRT",pillar:"Culturally responsive teaching",
+ q:"Which description best fits culturally responsive teaching (CRT)?",
+ o:[["Treat every student exactly the same and ignore culture.","CRT does the opposite: it draws on students’ backgrounds."],
+    ["Use students’ cultural backgrounds and references to improve learning for all.",""],
+    ["Teach English first, then add culture later.","CRT builds on cultural strengths from the start."]],a:1,
+ why:"CRT values students’ cultures as strengths, moves teachers away from deficit thinking, and prepares them to work effectively across races, cultures and languages."},
+{name:"Library: applying it",pillar:"Limited CRT skills",
+ q:"Rachel planned to add “textbooks and stuff” to the library, and John proposed a multicultural day. What did the researchers conclude?",
+ o:[["They were fully ready to apply CRT in their classes.","Their ideas were vague and showed limited skills."],
+    ["A single day is enough to change a school.","A one-day event shows the festival view the paper warns against."],
+    ["Their understanding grew, but they still need more training to apply CRT concretely.",""]],a:2,
+ why:"Learning about the topic is not the same as feeling able to teach it. The authors call for more courses at every level and standards that check teachers’ readiness and self-efficacy."},
+{name:"Playground: open dialogue",pillar:"Courage to talk",
+ q:"John admitted he was afraid to discuss race and culture. What does the paper suggest educators need?",
+ o:[["A safe, non-judgmental space to discuss sensitive topics and examine their own biases.",""],
+    ["Avoid sensitive topics to keep the peace.","Silence leaves biases unchallenged."],
+    ["Skip it, since the topics are too complex for teachers.","The authors argue the topics must be revisited again and again."]],a:0,
+ why:"Open dialogue helps educators see through other people’s eyes and reduce bias and discrimination. The paper urges revisiting these conversations throughout a career."}
+];
+var COL=[["#e4572e","Red"],["#f5b700","Yellow"],["#3fa34d","Green"],["#2a9df4","Blue"],["#8e5bd9","Purple"],["#ff8fb1","Pink"],["#1fb5a8","Teal"],["#ff9f1c","Orange"]];
+var painted={},cur=null,stage="intro",tried={},msg="";
+var P=document.getElementById("panel"),svg=document.getElementById("school");
+
+function count(){return Object.keys(painted).length}
+function pal(){return '<div class="pal">'+COL.map(function(c){return '<button class="sw" data-act="paint" data-c="'+c[0]+'" style="background:'+c[0]+'" aria-label="'+c[1]+'"></button>'}).join("")+'</div>'}
+function render(){
+ document.getElementById("meter").style.width=(count()/6*100)+"%";
+ var z=Z[cur],h="";
+ if(stage==="intro"){
+  h='<h2>'+(msg?'Nicely done!':'Welcome, educator!')+'</h2><p>'+(msg||'This school has lost its colors. Six areas are waiting for a culturally responsive decision.')+'</p><p><b>'+count()+' of 6</b> areas painted. Tap a grey area on the school to continue.</p>';
+ }else if(stage==="q"){
+  h='<span class="pill">'+z.pillar+'</span><h2>'+z.name+'</h2><p>'+z.q+'</p>'+
+   z.o.map(function(o,k){return '<button class="opt'+(tried[k]?' bad':'')+'" data-act="ans" data-k="'+k+'"'+(tried[k]?' disabled':'')+'>'+o[0]+'</button>'}).join("")+
+   (msg?'<div class="fb"><b>Not quite.</b> '+msg+' Try another answer.</div>':'');
+ }else if(stage==="color"){
+  h='<span class="pill">'+z.pillar+'</span><h2>'+(painted[cur]!==undefined?'Repaint this area':'Correct!')+'</h2>'+
+   '<div class="fb ok"><b>Why it matters:</b> '+z.why+'</div><p>Choose a color for this area.</p>'+pal();
+ }else{
+  h='<h2>Your school is full of color!</h2><p>You covered six lessons from the study:</p><ul>'+
+   Z.map(function(x){return '<li><b>'+x.pillar+'.</b> '+x.why+'</li>'}).join("")+'</ul><p>Tap any area to repaint it.</p><button class="btn" data-act="reset">Play again</button>';
+ }
+ P.innerHTML=h;
+ [].forEach.call(svg.querySelectorAll(".zone"),function(g){g.classList.toggle("sel",+g.dataset.z===cur&&stage!=="intro"&&stage!=="win")});
+}
+function openZone(i){cur=i;tried={};msg="";stage=painted[i]!==undefined?"color":"q";render()}
+function paint(c){
+ svg.querySelector('.zone[data-z="'+cur+'"] .f').style.fill=c;painted[cur]=c;
+ var n=count();
+ if(n===6){stage="win"}else{stage="intro";msg="That area is bright with color. "+(6-n)+" grey area"+(6-n>1?"s remain":" remains")+"."}
+ cur=null;render();
+}
+svg.addEventListener("click",function(e){var g=e.target.closest(".zone");if(g)openZone(+g.dataset.z)});
+svg.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){var g=e.target.closest(".zone");if(g){e.preventDefault();openZone(+g.dataset.z)}}});
+P.addEventListener("click",function(e){
+ var b=e.target.closest("[data-act]");if(!b)return;var a=b.dataset.act;
+ if(a==="ans"){var k=+b.dataset.k,o=Z[cur].o[k];if(k===Z[cur].a){stage="color";msg=""}else{tried[k]=1;msg=o[1]}render()}
+ else if(a==="paint")paint(b.dataset.c);
+ else if(a==="reset"){painted={};cur=null;stage="intro";msg="";[].forEach.call(svg.querySelectorAll(".f"),function(f){f.style.fill=""});render()}
+});
+render();
+</script>
+</body>
+</html>

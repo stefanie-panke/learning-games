@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Curriculum Quest: Inclusive Design Challenge</title>
+<style>
+:root{--bg:#f6f4ff;--card:#fff;--text:#1f1b3a;--muted:#5d5880;--accent:#6c4fe0;--ok:#1a9d5c;--okbg:#e3f7ec;--bad:#d6334a;--badbg:#fde8ec;--line:#ddd8f5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15122a;--card:#201c3d;--text:#f1eeff;--muted:#b3acd9;--accent:#9d86ff;--ok:#4fd18b;--okbg:#14382a;--bad:#ff6b81;--badbg:#401a24;--line:#38325f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15122a;--card:#201c3d;--text:#f1eeff;--muted:#b3acd9;--accent:#9d86ff;--ok:#4fd18b;--okbg:#14382a;--bad:#ff6b81;--badbg:#401a24;--line:#38325f;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;padding:16px}
+.wrap{max-width:640px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 4px 18px rgba(80,60,180,.08)}
+h1{font-size:1.6rem;margin:.2em 0}h2{font-size:1.15rem;margin:.3em 0 .6em}
+.hud{display:flex;justify-content:space-between;gap:8px;font-weight:600;margin-bottom:10px;font-size:.95rem}
+.bar{height:8px;background:var(--line);border-radius:9px;overflow:hidden;margin-bottom:14px}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--line);color:var(--accent);margin-bottom:8px}
+.case{background:var(--bg);border-left:4px solid var(--accent);padding:10px 14px;border-radius:8px;margin:8px 0 12px;font-size:.98rem}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:12px 14px;border:2px solid var(--line);background:var(--card);color:var(--text);border-radius:12px;font:inherit;cursor:pointer;transition:transform .1s,border-color .15s}
+.opt:hover:not([disabled]){border-color:var(--accent);transform:translateY(-1px)}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.fb{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:.95rem}
+.fb.ok{background:var(--okbg)}.fb.bad{background:var(--badbg)}
+.btn{margin-top:14px;padding:12px 22px;border:0;border-radius:12px;background:var(--accent);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.big{font-size:3rem;text-align:center;margin:0}.c{text-align:center}.muted{color:var(--muted)}
+</style></head>
+<body><div class="wrap"><div id="app"></div></div>
+<script>
+var Q=[
+{t:"c",q:"Which set lists the four foundational principles of inclusive curriculum design?",o:["Testing, discipline, repetition, ranking","Equity & access, diversity & representation, culturally responsive teaching, UDL","Lectures, textbooks, homework, exams","Technology, funding, speed, efficiency"],a:1,e:"These four principles guide educators in building learning environments that serve every learner. 🏛️"},
+{t:"c",q:"Universal Design for Learning (UDL) offers multiple means of…",o:["Punishment, praise and promotion","Reading, writing and reciting","Engagement, representation and expression","Speed, silence and seating"],a:2,e:"UDL = flexible ways to engage, to receive content (text, audio, video) and to show understanding. 🎧🎬✍️"},
+{t:"s",q:"Ms. Rahman’s class includes several English language learners who stay silent in discussions. What should she try first?",s:"📖 Case: Ms. Rahman teaches science. Her ELL students understand the ideas, but struggle to explain them in English and have stopped participating.",o:["Call on them more often so they practise","Offer visual aids, language supports and make linguistic diversity something the class celebrates","Move them to a separate, easier class","Wait until their English improves on its own"],a:1,e:"The review recommends language supports (visuals, bilingual help, language development activities) plus a classroom where linguistic diversity is valued. 🌍"},
+{t:"s",q:"What is the most inclusive fix for Mr. Karim’s assessment problem?",s:"📖 Case: Mr. Karim grades only with written exams. Tania speaks brilliantly about the topic but freezes on paper and scores low.",o:["Add a harder written exam","Lower the pass mark for Tania only","Offer options like portfolios, projects or performance tasks","Drop assessment altogether"],a:2,e:"Multiple means of assessment let students show mastery in ways that match their strengths, giving a more holistic, equitable picture. 🎤🗂️"},
+{t:"c",q:"In the review, “access” mainly focuses on…",o:["Removing physical, social and cultural barriers (e.g. assistive technology)","Giving every student the same textbook","Ranking students by ability","Increasing homework"],a:0,e:"Equity addresses systemic barriers; access removes the barriers that stop students from engaging, such as through accommodations and assistive tech. ♿"},
+{t:"s",q:"Which response best reflects inclusive curriculum design?",s:"📖 Case: At a low-income school, many students have no device or internet at home, and online tasks are due weekly.",o:["Penalise late online work","Provide technology access, socio-emotional support and partner with community organisations","Assume those students are unmotivated","Remove all digital tasks for everyone forever"],a:1,e:"Recognising socio-economic disparities means offering resources and support so every learner has a real chance to succeed. 💻🤝"},
+{t:"c",q:"A principal is hesitant about adopting inclusive practices. Which strategy does the review suggest for overcoming resistance to change?",o:["Mandate it with no discussion","Ignore the concerns","Offer professional development, share evidence and involve stakeholders in decisions","Wait for new staff"],a:2,e:"Communication, collaboration and evidence-based buy-in help ease fear of the unknown. 📣"},
+{t:"s",q:"Which culturally responsive move gives students voice and agency?",s:"📖 Case: Mr. Ahmed wants his students to feel ownership of their classroom and curriculum.",o:["Let students help set classroom norms and choose project topics","Hand out a fixed rulebook on day one","Pick all readings from one cultural perspective","Avoid discussing identity topics"],a:0,e:"Involving students in decisions about norms, content and assessment builds ownership, motivation and belonging. 🗣️✨"}
+];
+var i,score,streak,best,lives,done,app=document.getElementById("app");
+function start(){app.innerHTML='<div class="card c"><p class="big">🎓🌈</p><h1>Curriculum Quest</h1><p class="muted">Test your inclusive curriculum design skills with concept questions and mini case studies. Earn points, build streaks and unlock a rank!</p><p>🧠 Concepts · 📖 Case studies · 🔥 Streak bonuses</p><button class="btn" onclick="begin()">Start the quest 🚀</button></div>'}
+function begin(){i=0;score=0;streak=0;best=0;show()}
+function show(){var x=Q[i];done=false;
+var h='<div class="hud"><span>⭐ '+score+'</span><span>🔥 Streak '+streak+'</span><span>Q '+(i+1)+'/'+Q.length+'</span></div><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><div class="card"><span class="tag">'+(x.t=="s"?"📖 Case study":"🧠 Concept")+'</span>';
+if(x.s)h+='<div class="case">'+x.s.replace("📖 ","")+'</div>';
+h+='<h2>'+x.q+'</h2>';
+x.o.forEach(function(o,k){h+='<button class="opt" onclick="pick('+k+')">'+"ABCD"[k]+". "+o+'</button>'});
+h+='<div id="fb"></div></div>';app.innerHTML=h}
+function pick(k){if(done)return;done=true;var x=Q[i],b=document.querySelectorAll(".opt"),ok=k==x.a;
+b.forEach(function(el,n){el.disabled=true;if(n==x.a)el.classList.add("ok");else if(n==k)el.classList.add("bad")});
+var gain=0;if(ok){streak++;best=Math.max(best,streak);gain=10+(streak>1?(streak-1)*2:0);score+=gain}else streak=0;
+var last=i==Q.length-1;
+document.getElementById("fb").innerHTML='<div class="fb '+(ok?"ok":"bad")+'"><b>'+(ok?"🎉 Correct! +"+gain+" pts":"💡 Not quite!")+'</b><br>'+x.e+'</div><button class="btn" onclick="next()">'+(last?"See my results 🏆":"Next ➡️")+'</button>'}
+function next(){i++;if(i>=Q.length)end();else show()}
+function end(){var m=Q.length*10,r=score>=m?["🏆","Inclusion Champion"]:score>=m*.7?["🌟","Curriculum Designer"]:score>=m*.4?["🌱","Rising Educator"]:["📚","Curious Learner"];
+app.innerHTML='<div class="card c"><div class="bar"><i style="width:100%"></i></div><p class="big">'+r[0]+'</p><h1>'+r[1]+'</h1><p><b>'+score+' points</b> · Best streak 🔥 '+best+'</p><p class="muted">Remember: inclusive design means flexible engagement, representation and expression, so every learner can thrive. 💜</p><button class="btn" onclick="begin()">Play again 🔄</button></div>'}
+start();
+</script></body></html>
